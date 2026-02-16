@@ -24,7 +24,6 @@
     }
   </style>
 </head>
-<body>
   <div class="textlabel">
 Workspace.BombHolder.ChildAdded:Connect(function(class)
   game.Debris:AddItem(class, 0)
@@ -39,6 +38,18 @@ while true do
     task.wait()
   end
 end
+   </div>
+   <p style="color: white, font-size: 15px, white-space: pre-wrap">
+2) Скрипт для Infectious smile. Тут уже пришлось постараться чтобы сделать хоть какой анти лаг так как Bubble Messages отправляются со стороны сервера и невозможно напрямую убрать рендеринг сообщений.
+Однако я использовал параметр settings().Network.IncomingReplicationLag чтобы искусство вызвать задержку клиента и в конце вернуть всё чтобы все активации ClickDetector запустились.
+  Исходный код скрипта:
+   </p>
+   <div class="textlabel">
+settings().Network.IncomingReplicationLag = 1e9
+for _ = 1, 100000 do fireclickdetector(Workspace.Map.HumanBase.Vendor.BatCollection:FindFirstChildOfClass("ClickDetector")) end
+ 
+settings().Network.IncomingReplicationLag = 0
+task.defer(function() game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer) end)
    </div>
   </body>
 </html>
