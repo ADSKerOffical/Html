@@ -1,6 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <body style="background-color: black">
-    <p style="color: white; font-size: 100px; text-align: center">Hi</p>
+    <p style="color: white; font-size: 20px; text-align: center">Crash scripts:</p>
+    <head>
+      <meta charset="utf-8">
+  <title>TextLabel с переносами</title>
+  <style>
+    .textlabel {
+      background: #111;
+      color: #fff;
+      font-family: monospace;
+      padding: 12px;
+      border-radius: 6px;
+      max-width: 800px;
+      max-height: 300px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="textlabel">
+Workspace.BombHolder.ChildAdded:Connect(function(class)
+  game.Debris:AddItem(class, 0)
+end)
+
+local dd = 0
+while true do
+  dd += 1
+   game:GetService("Players").LocalPlayer.Character.Timebomb.Fire:FireServer(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
+  if dd >= 20 then
+    dd = 0
+    task.wait()
+  end
+end
+   </div>
   </body>
 </html>
